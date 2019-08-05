@@ -117,7 +117,7 @@ def project(request, project_id):
                 rating.save()
     else:
         form = RatingForm()
-    return render(request, "project.html",{"project":project,"profile":profile,"ratings":ratings,"form":form, "message":message, 'total_design':total_design, 'total_usability':total_usability, 'total_creativity':total_creativity, 'total_content':total_content})
+    return render(request, "all-templates/project.html",{"project":project,"profile":profile,"ratings":ratings,"form":form, "message":message, 'total_design':total_design, 'total_usability':total_usability, 'total_creativity':total_creativity, 'total_content':total_content})
 
 @login_required(login_url='/accounts/login')
 def search(request):
