@@ -21,7 +21,7 @@ def index(request):
         profile =Profile.objects.get(user=current_user)
     except ObjectDoesNotExist:
         return redirect('edit')
-    return render(request, 'index.html', locals())
+    return render(request, 'all-templates/index.html', locals())
 
 @login_required(login_url='/accounts/login')
 def profile(request):
@@ -29,7 +29,7 @@ def profile(request):
     profile =Profile.objects.get(user=current_user)
     projects = Project.objects.filter(user=current_user)
     my_profile = Profile.objects.get(user=current_user)
-    return render(request, 'profile.html', locals())
+    return render(request, 'all-templates/profile.html', locals())
 
 @login_required(login_url='/accounts/login')
 def edit_profile(request):

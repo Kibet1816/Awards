@@ -1,5 +1,60 @@
 {% extends 'all-templates/base.html' %}
+{% load static %}
+{% block styles %}
+{{block.super}}
+<link rel="stylesheet" href="{% static 'css/rate.css' %}">
+{% endblock %}
 
 {% block content %}
-<h1 class="text-center" >Welcome</h1>
+<hr><hr>
+<div class="header" style="text-align: center;" >
+  <img src="/media/download.png" alt="">
+  <h4>Post your sites and have them reviewed !!</h4>
+  <style>
+    h4{
+      font-family: 'Lacquer', sans-serif;
+    }
+  </style>
+</div>
+<hr><hr>
+<div class="container-fluid">
+  <br>
+  <div class="row">
+    {% for project in projects %}
+    <div class="col-md-4">
+      <div class="card">
+        <img class="card-img-top" src="{{project.landing_page.url}}" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text"><strong>{{project.title}}</strong>: {{project.description |truncatechars_html:170}}</p>
+          <p class="card-text"><strong>By</strong>: {{project.user}}</p>
+          <a href="http://{{project.live_link}}" class="btn btn-indigo btn-sm ">Live site</a>
+          <a href="/project/{{project.id}}" class="btn btn-indigo btn-sm">Review</a>
+          <style>
+            .btn {
+              position: relative;
+              display: inline-block;
+              margin: 1em;
+              padding: 1em 2em;
+              border: 0;
+              border-radius: 30px;
+              text-align: center;
+              white-space: nowrap;
+              cursor: pointer;
+              font-family: 'Open Sans', sans-serif;
+              font-size: 24px;
+            }
+          </style>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://rawgit.com/kottenator/jquery-circle-progress/1.2.2/dist/circle-progress.js"></script>
+
 {% endblock %}
+
+
+
