@@ -58,7 +58,7 @@ def new_project(request):
             return redirect('index')
     else:
         form = UploadForm()
-    return render(request, 'new_project.html', {'form': form,'profile':profile})
+    return render(request, 'all-templates/new_project.html', {'form': form,'profile':profile})
 
 @login_required(login_url='/accounts/login')
 def project(request, project_id):
