@@ -43,7 +43,7 @@ def edit_profile(request):
             return redirect('myprofile')
     else:
         form = ProfileForm()
-    return render(request, 'edit_profile.html', {'form': form, 'profile':profile})
+    return render(request, 'all-templates/edit_profile.html', {'form': form, 'profile':profile})
 
 @login_required(login_url='/accounts/login')
 def new_project(request):
